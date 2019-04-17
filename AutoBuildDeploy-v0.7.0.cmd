@@ -1,0 +1,63 @@
+ECHO OFF
+CLS
+TITLE Automatiza Build / Deploy - DEV
+
+:: Labels
+SET LABEL1=OPCAO 1: Build e Deploy
+SET LABEL2=OPCAO 2: Build Only
+SET LABEL3=OPCAO 3: Deploy Only
+SET LABEL4=OPCAO 4: Config
+SET LABEL5=OPCAO 5: Config
+SET DEVEL=Opcao em Desenvolvimento
+SET THEEND=THE END
+
+:: Textos
+SET INPUTMVNCLEANINSTALL=Insira o PATH para buildar o projeto
+
+:: Separadores
+SET BR=.
+SET HR=ZXZXZXZXZXZXZXZXZXZXZX
+
+:: Comandos
+SET MVNDEFAULT=mvn clean install -DskipTests
+
+:: MyDefaults
+SET MYPATH= 
+
+:MENU
+ECHO %LABEL1%
+ECHO %LABEL2%
+ECHO %LABEL3%
+ECHO %LABEL4%
+ECHO %DEVEL%
+
+ECHO Insira um número de opção: 
+SET /p opcao=
+GOTO opcao%opcao%
+
+:opcao1
+ECHO %LABEL1%
+CD %PATHMVNCLEANINSTALL%
+%MVNDEFAULT%
+CD %MYPATH%
+GOTO MENU
+
+:opcao2
+ECHO %LABEL2%
+:: Code
+GOTO MENU
+
+:opcao3
+ECHO %LABEL3%
+:: Code
+GOTO MENU
+
+:opcao4
+ECHO %LABEL4%
+ECHO %INPUTMVNCLEANINSTALL%
+SET /P PATHMVNCLEANINSTALL=
+:: Code
+GOTO MENU
+
+:END
+ECHO %THEEND%
